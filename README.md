@@ -1,5 +1,3 @@
-# twMVC-40-2
-
 # twmvc40-FeatureToggleExample
 淺談 Feature toggle 技術與實踐踐範例程式碼
 
