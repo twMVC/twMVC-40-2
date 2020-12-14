@@ -1,0 +1,15 @@
+﻿@using Microsoft.FeatureManagement
+@inject IFeatureManager FeatureManager
+@addTagHelper *, Microsoft.FeatureManagement.AspNetCore
+@{
+    ViewData["Title"] = "TimeWindowFlag Flag";
+}
+
+<div class="text-center">
+    <h1 class="display-4">TimeWindow Flag</h1>
+
+    <feature name="TimeWindowFlag">
+        <img src="~/images/twMVC40.jpg" class="d-block w-100" alt="...">
+    </feature>
+
+</div>

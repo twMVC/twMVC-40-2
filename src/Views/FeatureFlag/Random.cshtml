@@ -1,0 +1,52 @@
+﻿@using Microsoft.FeatureManagement
+@inject IFeatureManager FeatureManager
+@{
+    ViewData["Title"] = "Random Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Random Page</h1>
+
+    <div class="container login-container">
+        <div class="row">
+
+            @for (var i = 0; i < 8; i++)
+            {
+                @if (await FeatureManager.IsEnabledAsync("RandomFlag"))
+                {
+                    <div class="col-md-3 login-form-2">
+                        <h3>登入</h3>
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Your Email *" value=""/>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Your Password *" value=""/>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btnSubmit" value="Login"/>
+                            </div>
+                        </form>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-md-3 login-form-1">
+                        <h3>登入</h3>
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Your Email *" value=""/>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Your Password *" value=""/>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btnSubmit" value="Login"/>
+                            </div>
+                        </form>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

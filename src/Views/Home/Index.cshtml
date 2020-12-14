@@ -1,0 +1,17 @@
+﻿@using Microsoft.FeatureManagement
+@inject IFeatureManager FeatureManager
+@addTagHelper *, Microsoft.FeatureManagement.AspNetCore
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @if (await FeatureManager.IsEnabledAsync("BateBanner"))
+    {
+        <h1 class="display-4">Welcome Beta</h1>
+    }
+    else
+    {
+        <h1 class="display-4">Welcome</h1>
+    }
+</div>

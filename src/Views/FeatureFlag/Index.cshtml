@@ -1,0 +1,30 @@
+﻿@using Microsoft.FeatureManagement
+@inject IFeatureManager FeatureManager
+@addTagHelper *, Microsoft.FeatureManagement.AspNetCore
+@{
+    ViewData["Title"] = "Feature Flag Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Feature Flag Index</h1>
+
+    <feature name="BrowserFlag">
+        <h2>這是 Edge 才能看到的內容 !</h2>
+    </feature>
+
+    @if (await FeatureManager.IsEnabledAsync("NewFeatureFlag"))
+    {
+        <a asp-controller="FeatureFlag" asp-action="ViewNewFeature" class="btn btn-primary">
+            前往新功能頁面
+        </a>
+    }
+
+    <br /><br />
+
+    <feature name="NewFeatureFlag">
+        <a asp-controller="FeatureFlag" asp-action="ViewNewFeature" class="btn btn-primary">
+            前往新功能頁面，使用 TagHelper
+        </a>
+    </feature>
+
+</div>
